@@ -1,0 +1,112 @@
+// console.log("Hello World");
+// const http = require('http');
+
+// const hostname = '127.0.0.1';
+// const port = 3000;
+
+// const server = http.createServer((req, res) => {
+//   res.statusCode = 200;
+//   res.setHeader('Content-Type', 'text/plain');
+//   res.end('Hello World');
+// });
+
+// server.listen(port, hostname, () => {
+//   console.log(`Server running at http://${hostname}:${port}/`);
+// });
+
+
+const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  // res.setHeader('Content-Type', 'text/plain');
+  res.setHeader('Content-Type', 'text/html');
+  // res.end('Hello World');
+  res.end(`<!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Date and Time</title>
+  </head>
+  <style>
+      .container{
+          font-size: 25px;
+          background-color: blue;
+          color: black;
+          border: 5px solid red;
+          padding: 35px;
+          margin: 4px;
+          text-align: center;
+      }
+      #time{
+          font-weight: bold;
+      }
+  </style>
+  <body>
+      <div class="container">
+          Current time is <span id="time"></span>
+      </div>
+      <script>
+          console.log("This is Date and Time tutorial");
+          let now = new Date();
+          console.log(now);
+  
+          let no = new Date(0);
+          console.log(no);
+  
+  
+          // let newDate = new Date("2030-09-20");
+          // console.log(newDate);
+  
+          // let newDate = new Date(Year, Month, Date, hours, minutes, Seconds, milliseconds);
+          let newDate = new Date(3020, 4, 15, 5, 30, 45,45);
+          console.log(newDate);
+  
+          let yr = newDate.getFullYear();
+          console.log("The year is ", yr);
+  
+          let Month = newDate.getMonth();
+          console.log("The month is ", Month);
+  
+          let dat = newDate.getDate();
+          console.log("The date is ", dat);
+  
+          // let day = newDate.getDay();
+          // console.log("The day is ", day);
+  
+          let hr = newDate.getHours();
+          console.log("The hours is ", hr);
+  
+          let min = newDate.getMinutes();
+          console.log("The minutes is ", min);
+  
+          let sec = newDate.getSeconds();
+          console.log("The seconds is ", sec);
+  
+          let mili = newDate.getMilliseconds();
+          console.log("The milliseconds is ", mili);
+  
+  
+          newDate.setDate(3);
+          newDate.setMinutes(45);
+          console.log(newDate);
+          setInterval(updateTime, 1000);
+  
+          function updateTime(){
+              time.innerHTML = new Date();
+          }
+      </script>
+  </body>
+  
+  </html>`);
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
